@@ -22,6 +22,11 @@ npx create-react-app react-with-cicd
 准备一台服务器，用来部署 `jenkins` 服务
 > 提示：可以在 **阿里云** 进行购买，或自行搭建一个 `VMWare` 虚拟机，操作系统为 `Linux` 即可。
 
+阿里云购买
+- 选择 实例与镜像 [实例](https://ecs.console.aliyun.com/?spm=5176.2020520114.recommends.decs.58b3558aseYH2X#/server/region/cn-qingdao) 
+- 创建实例
+- 按量付费
+- 选择 centos 操作系统
 ### 安装 JDK
 ```bash
 cd /usr/local/src
@@ -51,3 +56,22 @@ wget -O /etc/yum.repos.d/jenkins.repo https://pkg.jenkins.io/redhat-stable/jenki
 rpm --import https://pkg.jenkins.io/redhat-stable/jenkins.io.key
 yum install -y jenkins
 ```
+
+### 获取 Jenkins 密码
+```bash
+/var/lib/jenkins/secrets/initialAdminPassword
+```
+
+### 操作
+- 默认端口号 8080
+admin -> 设置
+- 修改源 https://mirrors.tuna.tsinghua.edu.cn/jenkins/updates/update-center.json
+- 插件
+  - Generic Webhook Trigger
+  - publish over ssh
+  - nvm wrapper
+
+### 配置 webhook
+- 新建任务名可以和项目名同名
+  选择一个自由风格的软件项目
+- 
